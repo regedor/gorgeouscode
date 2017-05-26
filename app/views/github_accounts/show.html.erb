@@ -1,0 +1,16 @@
+<h1><%= @github_account.name %></h1>
+
+<hr/>
+
+<h4>Repository list</h4>
+<ul>
+  <% @projects.each do |project| %>
+    <li>
+      <%= link_to project.github_name, show_last_report_path(project.github_owner, project.github_name) %> 
+    </li>
+  <% end %>
+</ul>
+<hr/>
+<h4>Averages</h4>
+<p><strong>Code coverage percent:</strong> <%= @average_code_coverage_percent %></p>
+<p><strong>Rails best practices score:</strong> <%= @average_rbp_score %></p>

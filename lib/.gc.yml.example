@@ -1,0 +1,21 @@
+language: ruby
+sudo: false
+cache: bundler
+rvm:
+  - 2.1.5
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - pg_config --version
+  #- cp config/secrets.yml.example config/secrets.yml
+  #- cp config/database.travis.yml config/database.yml
+  - psql -c "create database custom_db_name;" -U postgres
+  - bundle exec rake db:schema:load RAILS_ENV=development
+
+model_styles:
+  User:
+    style: filled
+    fillcolor: "#000000"
+    fontcolor: "#FFFFFF"

@@ -1,0 +1,24 @@
+Fri, 15 Jan 2016 15:49:03 +0000
+README.rdoc	Fri, 13 Nov 2015 11:31:04 +0000
+app/admin/dashboard.rb	Wed, 09 Dec 2015 11:50:54 +0000
+app/admin/projects.rb	Mon, 28 Dec 2015 11:34:37 +0000
+app/controllers/application_controller.rb	Thu, 17 Dec 2015 10:36:47 +0000
+app/controllers/hooks_controller.rb	Thu, 07 Jan 2016 10:55:34 +0000
+app/controllers/omniauth_callbacks_controller.rb	Wed, 13 Jan 2016 14:51:44 +0000
+app/controllers/projects_controller.rb	Thu, 14 Jan 2016 17:25:27 +0000
+app/helpers/application_helper.rb	Thu, 10 Dec 2015 12:25:31 +0000
+app/helpers/projects_helper.rb	Mon, 28 Dec 2015 11:34:37 +0000
+app/jobs/create_report_job.rb	Mon, 28 Dec 2015 18:42:03 +0000
+app/jobs/model_diagram_analysis_job.rb	Mon, 28 Dec 2015 11:34:37 +0000
+app/jobs/rails_best_practices_analysis_job.rb	Wed, 06 Jan 2016 19:01:39 +0000
+app/jobs/set_as_analysed_job.rb	Thu, 07 Jan 2016 10:31:39 +0000
+app/models/analyses/model_diagram_analysis.rb	Fri, 15 Jan 2016 14:46:34 +0000
+app/models/analyses/rails_best_practices_analysis.rb	Wed, 06 Jan 2016 18:54:08 +0000
+app/models/project.rb	Fri, 15 Jan 2016 15:13:31 +0000
+app/models/report.rb	Fri, 15 Jan 2016 15:31:56 +0000
+app/models/user.rb	Mon, 28 Dec 2015 17:55:11 +0000
+app/services/create_project.rb	Fri, 15 Jan 2016 15:43:59 +0000
+app/services/start_report.rb	Fri, 15 Jan 2016 15:45:56 +0000
+lib/dotojson/dotojson.rb	Mon, 23 Nov 2015 15:36:22 +0000
+lib/dotojson/test.rb	Mon, 23 Nov 2015 15:36:22 +0000
+lib/modules/vm_connection.rb	Wed, 06 Jan 2016 17:57:45 +0000

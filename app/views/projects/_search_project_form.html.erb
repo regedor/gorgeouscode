@@ -1,0 +1,8 @@
+<%= form_tag(projects_path, method: 'get', role: 'form') do %>
+  <div class="field form-group">
+    <%= text_field_tag :search, params[:search], placeholder: 'Project url, owner or name', class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
+  </div>
+<% end %>

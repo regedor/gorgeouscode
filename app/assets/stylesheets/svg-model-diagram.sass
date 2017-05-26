@@ -1,0 +1,71 @@
+div.svg-model-diagram-info.well
+  margin-top: 20px
+
+div#svg-model-diagram
+  background: #F9F9F9
+  //width: 845px
+
+  &.svg-model-overview
+    background: #F9F9F9
+    //width: 100%
+    //height: 100%
+
+path.link
+  fill: none
+  stroke-width: 1.5px
+
+circle
+  fill: #ccc
+  //stroke: #fff
+  //stroke-width: 1.5px
+
+text
+  pointer-events: none
+
+.node, .link
+  cursor: pointer
+
+g > text
+  font-size: 8px
+  font-family: Monospace, sans-serif
+
+svg
+  cursor: move
+
+// new css
+.svg-container
+  display: inline-block
+  position: relative
+  width: 100%
+  // padding-bottom changes the viewport height
+  padding-bottom: 50%
+  vertical-align: top
+  overflow: hidden
+
+.svg-content-responsive
+  display: inline-block
+  position: absolute
+  top: 0
+  left: 0
+
+image.help-image
+  transition: opacity 0.5s
+
+svg
+  & g#help-btn-group
+    opacity: .3
+    cursor: pointer
+    transition: opacity 0.2s
+    &:hover
+      opacity: .8
+  & > g#help-btn-group > rect.help-btn
+    transition: stroke-width 0.05s
+    transition: stroke 0.05s
+
+g > text.help-btn-text
+  font-family: 'Arial'
+
+.inactive-help-btn
+  stroke: darkRed !important
+  transition: stroke-width 0.05s
+  transition: stroke 0.05s

@@ -1,0 +1,12 @@
+<% if current_user && params[:search] && @searched_projects.blank? %>
+  <div class='well well-warning'>
+    <%= form_for @project do |f| %>
+      <div class="field form-group">
+        <%= f.text_field :github_url, placeholder: 'Insert new Github URL if you want to submit a new project.', class: 'form-control' %>
+      </div>
+      <div class="action">
+        <%= f.submit 'Add new project', class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

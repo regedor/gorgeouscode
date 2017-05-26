@@ -1,0 +1,15 @@
+miguelregedor:
+  email: miguelregedor@mail.com
+  encrypted_password: <%= User.new.send(:password_digest, "password") %>
+  first_name: Miguel
+  last_name: Regedor
+  confirmed_at: <%= Date.yesterday %> 
+  github_token: f595f78b6731645460555d9eb6e6524386ed43de
+
+miguelfernandes:
+  email: miguelfernandes@mail.com
+  encrypted_password: <%= User.new.send(:password_digest, "password") %>
+  first_name: Miguel
+  last_name: Fernandes
+  confirmed_at: <%= Date.yesterday %> 
+  github_token: f595f78b6731645460555d9eb6e6524386ed43de

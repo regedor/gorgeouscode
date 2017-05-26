@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gorgeous Code</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'd3.v3.js' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/navbar_top' %>
+  <div class="wrapper padding-top-20px">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 padding-bottom-20px">
+          <%= raw display_flash_messages %>
+          <%= yield %>
+        </div>
+        <div class="col-md-3 sidebar">
+          <%= render 'layouts/sidebar' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'layouts/footer' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>

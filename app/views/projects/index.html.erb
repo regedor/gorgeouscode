@@ -1,0 +1,10 @@
+<div class="row">
+  <%= render "add_project_on_blank_search", searched_projects: @searched_projects, project: @project %>
+  <%= render "search_project_form" %>
+</div>
+<%= render "searched_projects", searched_projects: @searched_projects %>
+<%=
+  render "project_list",
+    existing_projects: @existing_projects,
+    missing_projects: @missing_projects
+%>

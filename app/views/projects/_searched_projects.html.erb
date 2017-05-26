@@ -1,0 +1,10 @@
+<% if searched_projects.present? %>
+  <div class="well">
+    <h4 class='text-primary'>We've <span class='bigger-text'>found <%= pluralize(searched_projects.count, 'match') %></span> for your search.</h4>
+    <ul>
+      <% searched_projects.each do |project| %>
+        <li><%= link_to project.github_name, show_last_report_path(project.github_owner, project.github_name) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

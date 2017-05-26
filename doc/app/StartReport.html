@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class StartReport - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-call">#call</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-StartReport">
+  <h1 id="class-StartReport" class="class">
+    class StartReport
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(project:, commit_hash:, branch:, queued_at: Time.zone.now)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/services/start_report.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">project</span>,, <span class="ruby-identifier">commit_hash</span>,, <span class="ruby-identifier">branch</span>,, <span class="ruby-identifier">queued_at</span><span class="ruby-operator">:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">now</span>)
+  <span class="ruby-ivar">@report</span> = <span class="ruby-constant">Report</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-identifier">project</span>,
+    <span class="ruby-identifier">commit_hash</span><span class="ruby-operator">:</span> <span class="ruby-identifier">commit_hash</span>,
+    <span class="ruby-identifier">branch</span><span class="ruby-operator">:</span> <span class="ruby-identifier">branch</span>,
+    <span class="ruby-identifier">queued_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">queued_at</span>
+  )
+  <span class="ruby-ivar">@project</span> = <span class="ruby-identifier">project</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-call" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">call</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates new <a href="VMConnection.html">VMConnection</a>, prepares
+repository and gemset configuration and queues analysers with ActiveJob.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="call-source">
+            <pre><span class="ruby-comment"># File app/services/start_report.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">call</span>
+  <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">analysed</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">save</span>
+
+  <span class="ruby-comment"># clone repository</span>
+  <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">started_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-identifier">connection</span> = <span class="ruby-constant">VMConnection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@report</span>)
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">prepare_repository</span>
+  <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">rails_app_path</span> = <span class="ruby-identifier">get_rails_path</span>(<span class="ruby-identifier">connection</span>)
+  <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">save</span>
+
+  <span class="ruby-comment"># setup rails app</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">rails_app_present?</span>
+    <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">gc_config</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">get_gc_config</span>([<span class="ruby-string">&#39;.gc.yml&#39;</span>, <span class="ruby-string">&#39;.travis.yml&#39;</span>])
+    <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">save</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">gc_config_valid?</span>
+      <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">ruby_version</span> = <span class="ruby-identifier">get_ruby_version</span>
+      <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">save</span>
+
+      <span class="ruby-comment"># setup do rvm</span>
+      <span class="ruby-comment"># nova connection para atualizar o @report</span>
+      <span class="ruby-identifier">connection</span> = <span class="ruby-constant">VMConnection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@report</span>)
+      <span class="ruby-comment"># detetei problemas quando o projeto tem rake tasks</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">delete_rake_tasks_folder</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">prepare_gemset</span>
+
+      <span class="ruby-comment"># database and app .yml.example to .yml, etc</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute_in_rails_app</span>(<span class="ruby-ivar">@report</span>.<span class="ruby-identifier">gc_config_to_yml</span>[<span class="ruby-string">&#39;before_script&#39;</span>])
+      <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">finished_setup_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-ivar">@report</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Couldn&#39;t find a Rails application.&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># queue analyses jobs</span>
+
+  <span class="ruby-identifier">rails_best_practices_analysis</span> = <span class="ruby-constant">Analyses</span><span class="ruby-operator">::</span><span class="ruby-constant">RailsBestPracticesAnalysis</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">report</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@report</span>)
+  <span class="ruby-constant">RailsBestPracticesAnalysisJob</span>.<span class="ruby-identifier">perform_later</span>(<span class="ruby-identifier">rails_best_practices_analysis</span>)
+
+  <span class="ruby-identifier">model_diagram_analysis</span> = <span class="ruby-constant">Analyses</span><span class="ruby-operator">::</span><span class="ruby-constant">ModelDiagramAnalysis</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">report</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@report</span>)
+  <span class="ruby-constant">ModelDiagramAnalysisJob</span>.<span class="ruby-identifier">perform_later</span>(<span class="ruby-identifier">model_diagram_analysis</span>)
+
+  <span class="ruby-constant">SetAsAnalysedJob</span>.<span class="ruby-identifier">perform_later</span>(<span class="ruby-ivar">@project</span>, <span class="ruby-ivar">@report</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

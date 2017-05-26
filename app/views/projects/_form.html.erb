@@ -1,0 +1,29 @@
+<div class="well">
+  <%= form_for project do |f| %>
+    <% if project.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(project.errors.count, "error") %> <%= t('error_saving') %>:</h2>
+        <ul>
+          <% project.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :github_url, "GitHub URL" %>
+      <%= f.text_field :github_url, class: 'form-control' %>
+      <span class="help-block">Should be the url to rails project in GitHub.</span>
+    </div>
+
+    <div class="field form-group">
+      <%= f.check_box :analysed %>
+      <%= label(:project, :analysed, 'Update Repository and Generate New Report') %>
+    </div>
+
+    <div class="action">
+     <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

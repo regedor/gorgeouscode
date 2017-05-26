@@ -1,0 +1,9 @@
+<% if @project.has_last_report_analyses %>
+  <%= render "last_report", project: @project, last_report: @last_report %>
+<% else %>
+  <div class="alert alert-warning">
+    <span><%= link_to @project.github_name, @project.github_url %> by <%= @project.github_owner %></span>
+    <p>This project is waiting for analysis</p>
+  </div>
+  <%= link_to '<i class="fa fa-arrow-left"></i> Go Back'.html_safe, projects_path, class: "btn btn-primary btn-large" %>
+<% end %>

@@ -1,0 +1,72 @@
+<div>
+  <h1 class="display-inline-block" style="font-size: <%= 70 - project.github_name.length || 0 %>px;">
+    <% if project.github_private %>
+      <i class="fa fa-lock"></i>
+    <% end %>
+    <%= project.github_name %>
+  </h1>
+  <span class="float-right"><%= link_to project.github_name, project.github_url %> by <%= @project.github_owner %></span>
+</div>
+
+<%= content_tag(:p, last_report.rbp_description.capitalize + (desc[-1] == "." ? "" : ".")) if last_report.rbp_description %>
+
+<% if last_report.rails_best_practices_analysis %>
+  <div class="well">
+    <p><%= humanized_description(project).html_safe %></p>
+  </div>
+<% end %>
+
+<%= link_to '<i class="fa fa-arrow-left"></i> Go Back'.html_safe, projects_path, class: 'btn btn-primary btn-large' %>
+<%= link_to 'Model overview', show_last_report_model_overview_path(project.github_owner, project.github_name), class: 'btn btn-primary btn-large' %>
+<%= link_to '<i class="fa fa-home"></i> Homepage'.html_safe, project.github_url, class: 'btn btn-large', target: '_blank' %>
+<%= link_to '<i class="fa fa-eye"></i> Source Code'.html_safe, project.github_url, class: 'btn btn-large', target: '_blank' %>
+<hr>
+
+<% if last_report && last_report.model_diagram_analysis && last_report.model_diagram_analysis.json_data? %>
+  <% model_diagram_json = last_report.model_diagram_analysis.json_data %>
+  <script>
+    var model_diagram_json = <%= raw model_diagram_json %>;
+  </script>
+
+  <h4>Model diagram</h4>
+  <div id="svg-model-diagram">
+  </div>
+
+  <div class="svg-model-diagram-info well">
+    <div id="model-diagram-info">
+      <p class="model-info-title text-muted">Model information</p>
+    </div>
+  </div>
+  <hr>
+<% else %>
+  <p class="text-muted">Diagram not available</p>
+  <hr>
+<% end %>
+
+<% if project.last_percents(@number_of_percents) %>
+  <script>
+var code_coverage_json = <%= raw project.last_percents(@number_of_percents) %>;
+  </script>
+
+  <div class="row">
+    <div class="col-md-9">
+      <h4>Code coverage timeline</h4>
+    </div>
+    <div class="col-md-3">
+      <p class="text-muted margin-top-10">Last percent: <%= last_report.code_coverage_analysis.percent %>%</p>
+    </div>
+  </div>
+  <div id="svg-code-coverage-diagram">
+  </div>
+<% else %>
+  <p class="text-muted">Code coverage diagram not available</p>
+<% end %>
+
+<% if last_report.rails_best_practices_analysis %>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Rails best practices score</h4>
+      <p class="badge"><%= last_report.rails_best_practices_analysis.final_score  %> out of 5</p>
+    </div>
+  </div>
+<% end %>

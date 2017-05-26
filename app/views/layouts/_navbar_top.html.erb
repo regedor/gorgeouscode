@@ -1,0 +1,16 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <%= link_to '<i class="fa fa-star"></i></i> Gorgeous Code'.html_safe, projects_path, class: 'navbar-brand' %>
+     <% if user_signed_in? %>
+      <div class="nav navbar-right">
+        <%= image_tag current_user.photo_url, class: 'photo-size' %>
+        <%= link_to t('sign_out'), destroy_user_session_path, method: 'delete', class: 'btn btn-default navbar-btn' %>
+        <p class="navbar-text display-inline-block"><%= current_user.full_name %></p>
+      </div>
+    <% else %>
+      <div class="nav navbar-right">
+        <%= link_to t('sign_in'), new_user_session_path, class: 'btn btn-default navbar-btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>

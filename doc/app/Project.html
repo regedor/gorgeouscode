@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class Project - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ActiveRecord::Base
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-latest_analysed">::latest_analysed</a>
+    
+    <li ><a href="#method-c-logged_in_search">::logged_in_search</a>
+    
+    <li ><a href="#method-c-logged_out_search">::logged_out_search</a>
+    
+    <li ><a href="#method-c-search">::search</a>
+    
+    <li ><a href="#method-i-assign_owner_and_name">#assign_owner_and_name</a>
+    
+    <li ><a href="#method-i-extract_info_from_url">#extract_info_from_url</a>
+    
+    <li ><a href="#method-i-github_collaborator-3F">#github_collaborator?</a>
+    
+    <li ><a href="#method-i-update_github_info">#update_github_info</a>
+    
+    <li ><a href="#method-i-update_owner_and_name_from_url">#update_owner_and_name_from_url</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Project">
+  <h1 id="class-Project" class="class">
+    class Project
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-latest_analysed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">latest_analysed</span><span
+            class="method-args">(n)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the latest n public and analysed projects, ordered by created_at.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="latest_analysed-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">latest_analysed</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-identifier">with_analysis</span>
+    .<span class="ruby-identifier">public_repositories</span>
+    .<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;created_at DESC&#39;</span>)
+    .<span class="ruby-identifier">limit</span>(<span class="ruby-identifier">n</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-logged_in_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logged_in_search</span><span
+            class="method-args">(search_params, current_user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all analysed projects within a search, where the user is a
+collaborator, ordered by github_name.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="logged_in_search-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">logged_in_search</span>(<span class="ruby-identifier">search_params</span>, <span class="ruby-identifier">current_user</span>)
+  <span class="ruby-identifier">with_analysis</span>
+    .<span class="ruby-identifier">search</span>(<span class="ruby-identifier">search_params</span>)
+    .<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;github_name&#39;</span>)
+    .<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">project</span><span class="ruby-operator">|</span> <span class="ruby-identifier">project</span>.<span class="ruby-identifier">github_private</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">project</span>.<span class="ruby-identifier">github_collaborator?</span>(<span class="ruby-identifier">current_user</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-logged_out_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logged_out_search</span><span
+            class="method-args">(search_params)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all public and analysed projects within a search, ordered by
+github_name.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="logged_out_search-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">logged_out_search</span>(<span class="ruby-identifier">search_params</span>)
+  <span class="ruby-identifier">with_analysis</span>
+    .<span class="ruby-identifier">search</span>(<span class="ruby-identifier">search_params</span>)
+    .<span class="ruby-identifier">public_repositories</span>
+    .<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;github_name&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">search</span><span
+            class="method-args">(query)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all projects matching a given query to the github_url, github_owner
+or github_name.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="search-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">query</span>)
+  <span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;github_url like ?&#39;</span>, <span class="ruby-node">&quot;%#{query}%&quot;</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;github_owner like ?&#39;</span>, <span class="ruby-node">&quot;%#{query}%&quot;</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;github_name like ?&#39;</span>, <span class="ruby-node">&quot;%#{query}%&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-assign_owner_and_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assign_owner_and_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Assigns github_owner and github_name from github_url and returns the
+project</p>
+          
+          
+
+          
+          <div class="method-source-code" id="assign_owner_and_name-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assign_owner_and_name</span>
+  <span class="ruby-identifier">extract_info_from_url</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-extract_info_from_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extract_info_from_url</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Assigns github_name and github_owner attributes from github_url attribute.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="extract_info_from_url-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extract_info_from_url</span>
+  <span class="ruby-identifier">splitted_url</span> = <span class="ruby-identifier">github_url</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39; &#39;</span>,<span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">split</span> <span class="ruby-string">&#39;/&#39;</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_name</span>  = <span class="ruby-identifier">splitted_url</span>[<span class="ruby-value">-1</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_owner</span> = <span class="ruby-identifier">splitted_url</span>[<span class="ruby-value">-2</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-github_collaborator-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">github_collaborator?</span><span
+            class="method-args">(current_user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if current_user is collaborator</p>
+          
+          
+
+          
+          <div class="method-source-code" id="github_collaborator-3F-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">github_collaborator?</span>(<span class="ruby-identifier">current_user</span>)
+  <span class="ruby-identifier">github_collaborators</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_hash</span>[<span class="ruby-value">:login</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">github_nickname</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update_github_info" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_github_info</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new client connection to Github and updates project related
+github attributes.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update_github_info-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_github_info</span>
+  <span class="ruby-identifier">update_owner_and_name_from_url</span>
+
+  <span class="ruby-identifier">client</span> = <span class="ruby-constant">Octokit</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">access_token</span><span class="ruby-operator">:</span> <span class="ruby-identifier">added_by_user</span>.<span class="ruby-identifier">github_token</span>)
+  <span class="ruby-identifier">github_repository</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">repository?</span>(<span class="ruby-node">&quot;#{github_owner}/#{github_name}&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">client</span>.<span class="ruby-identifier">repository</span>(<span class="ruby-node">&quot;#{github_owner}/#{github_name}&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">github_repository</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_forks</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">forks</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_watchers</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">watchers</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_size</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_private</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">private</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_homepage</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">homepage</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_description</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">description</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_fork</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">fork</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_has_wiki</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">has_wiki</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_has_issues</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">has_issues</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_open_issues</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">open_issues</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_pushed_at</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">pushed_at</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_created_at</span> = <span class="ruby-identifier">github_repository</span>.<span class="ruby-identifier">created_at</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">github_private</span>
+      <span class="ruby-identifier">repository_collaborators</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">collaborators</span>(<span class="ruby-node">&quot;#{github_owner}/#{github_name}&quot;</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">github_collaborators</span> = <span class="ruby-identifier">repository_collaborators</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update_owner_and_name_from_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_owner_and_name_from_url</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Updates github_owner and github_name attributes and saves project.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update_owner_and_name_from_url-source">
+            <pre><span class="ruby-comment"># File app/models/project.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_owner_and_name_from_url</span>
+  <span class="ruby-identifier">extract_info_from_url</span>
+  <span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

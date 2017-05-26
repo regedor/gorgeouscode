@@ -1,0 +1,109 @@
+apiflat_book:
+  github_url: "https://github.com/ptmiguelfernandes/apiflat_book"
+  github_owner: ptmiguelfernandes
+  github_name: apiflat_book
+  github_forks: 0
+  github_watchers: 0
+  github_size: 0
+  github_private: false
+  github_homepage: "https://github.com/ptmiguelfernandes/apiflat_book"
+  github_description: "Apiflat book"
+  github_fork: false
+  github_has_wiki: false
+  github_has_issues: false
+  github_open_issues: 0
+  github_pushed_at: 2015-11-13
+  github_created_at: 2015-11-13
+  has_last_report_analyses: true
+  analyse_updated_at: 2015-11-13
+  github_info_updated_at: 2015-11-13
+  added_by_user: miguelfernandes
+  owner_user: miguelfernandes
+
+miguelfernandes-publicproject1:
+  github_url: "https://github.com/ptmiguelfernandes/miguelfernandes-publicproject1"
+  github_owner: ptmiguelfernandes
+  github_name: miguelfernandes-publicproject1
+  github_forks: 0
+  github_watchers: 0
+  github_size: 0
+  github_private: false
+  github_homepage: "https://github.com/ptmiguelfernandes/miguelfernandes-publicproject1"
+  github_description: "Public project 2"
+  github_fork: false
+  github_has_wiki: false
+  github_has_issues: false
+  github_open_issues: 0
+  github_pushed_at: 2015-11-13
+  github_created_at: 2015-11-13
+  has_last_report_analyses: true
+  analyse_updated_at: 2015-11-13
+  github_info_updated_at: 2015-11-13
+  added_by_user: miguelfernandes
+  owner_user: miguelfernandes
+
+miguelfernandes-publicproject2:
+  github_url: "https://github.com/ptmiguelfernandes/miguelfernandes-publicproject2"
+  github_owner: ptmiguelfernandes
+  github_name: miguelfernandes-publicproject2
+  github_forks: 0
+  github_watchers: 0
+  github_size: 0
+  github_private: false
+  github_homepage: "https://github.com/ptmiguelfernandes/miguelfernandes-publicproject2"
+  github_description: "Public project 2"
+  github_fork: false
+  github_has_wiki: false
+  github_has_issues: false
+  github_open_issues: 0
+  github_pushed_at: 2015-11-13
+  github_created_at: 2015-11-13
+  has_last_report_analyses: false
+  analyse_updated_at: 2015-11-13
+  github_info_updated_at: 2015-11-13
+  added_by_user: miguelfernandes
+  owner_user: miguelfernandes
+
+miguelregedor-privateproject1:
+  github_url: "https://github.com/regedor/miguelregedor-privateproject1"
+  github_owner: regedor
+  github_name: miguelregedor-privateproject1
+  github_forks: 0
+  github_watchers: 0
+  github_size: 0
+  github_private: true
+  github_homepage: "https://github.com/regedor/miguelregedor-privateproject1"
+  github_description: ""
+  github_fork: false
+  github_has_wiki: false
+  github_has_issues: false
+  github_open_issues: 0
+  github_pushed_at: 2015-11-13
+  github_created_at: 2015-11-13
+  has_last_report_analyses: false
+  analyse_updated_at: 2015-11-13
+  github_info_updated_at: 2015-11-13
+  added_by_user: miguelregedor
+  owner_user: miguelregedor
+
+miguelregedor-privateproject2:
+  github_url: "https://github.com/regedor/miguelregedor-privateproject2"
+  github_owner: regedor
+  github_name: miguelregedor-privateproject2
+  github_forks: 0
+  github_watchers: 0
+  github_size: 0
+  github_private: true
+  github_homepage: "https://github.com/regedor/miguelregedor-privateproject2"
+  github_description: ""
+  github_fork: false
+  github_has_wiki: false
+  github_has_issues: false
+  github_open_issues: 0
+  github_pushed_at: 2015-11-13
+  github_created_at: 2015-11-13
+  has_last_report_analyses: true
+  analyse_updated_at: 2015-11-13
+  github_info_updated_at: 2015-11-13
+  added_by_user: miguelregedor
+  owner_user: miguelregedor

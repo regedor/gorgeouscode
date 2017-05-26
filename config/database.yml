@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  endcoding: utf8
+  pool: 5
+  timeout: 5000
+  # username: 'miguel'
+  # password: 'password'
+
+development:
+  <<: *default
+  database: gorgeous-code-alpha_development
+
+test:
+  <<: *default
+  database: gorgeous-code-alpha_test
+
+production:
+  <<: *default
+  database: gorgeous-code-alpha_production

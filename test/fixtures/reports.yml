@@ -1,0 +1,46 @@
+one:
+  commit_hash: aae0d0b728a05b95fd7c0788e0f8879d2ab9f613
+  branch: master
+  project: apiflat_book
+  rails_app_path: "/projects/itmiguelfernandes/apiflat_book/"
+  gc_config:
+  model_diagram_analysis: one
+  rails_best_practices_analysis: one
+  code_coverage_analysis: one
+  created_at: <%= 10.days.ago %>
+
+two:
+  commit_hash: 6301635f6f80827b0419a7c04b46266d56d8fee6
+  branch: master
+  project: woodlock
+  rails_app_path: "/projects/regedor/woodlock/"
+  gc_config:
+  model_diagram_analysis: two
+  rails_best_practices_analysis: two
+
+three:
+  commit_hash: 1111135f6f80827b0419a7c04b46266d56d8fee6
+  branch: master
+  project: some-project1
+  rails_app_path:
+  gc_config:
+  model_diagram_analysis:
+  rails_best_practices_analysis:
+
+four:
+  commit_hash: 1110000728a05b95fd7c0788e0f8111d2ab9f613
+  branch: master
+  project: apiflat_book
+  rails_app_path: "/projects/itmiguelfernandes/apiflat_book/"
+  gc_config:
+  code_coverage_analysis: two
+  created_at: <%= 9.days.ago %>
+
+five:
+  commit_hash: 2222222228a05b95fd7c0788e0f8111d2ab9f613
+  branch: master
+  project: apiflat_book
+  rails_app_path: "/projects/itmiguelfernandes/apiflat_book/"
+  gc_config:
+  code_coverage_analysis: three
+  created_at: <%= 8.days.ago %>
